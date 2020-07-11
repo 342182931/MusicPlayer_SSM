@@ -16,7 +16,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver{
 		if(ex instanceof CustomException) {
 			customException=(CustomException) ex;
 		}else {
-			customException=new CustomException("Î´Öª´íÎó");
+			customException=new CustomException("æœªçŸ¥é”™è¯¯");
 		}
 		String message=customException.getMessage();
 		System.out.println(message);
