@@ -15,16 +15,16 @@ import com.xu.ssm.po.Music;
 
 public class test {
 
-	// ´³½«sqlsessionfactory
+	// é—¯å°†sqlsessionfactory
 		private SqlSessionFactory sqlSessionFactory;
 
 		@Before
 		public void setUp() throws Exception {
-			// mybatisÅäÖÃÎÄ¼ş
+			// mybatisé…ç½®æ–‡ä»¶
 			String resource = "classpath:SqlMapConfig.xml";
-			// µÃµ½ÅäÖÃÎÄ¼şÁ÷
+			// å¾—åˆ°é…ç½®æ–‡ä»¶æµ
 			InputStream inputstream = Resources.getResourceAsStream(resource);
-			// ´´½¨»á»°¹¤³§£¬´«ÈëmybatisÅäÖÃĞÅÏ¢
+			// åˆ›å»ºä¼šè¯å·¥å‚ï¼Œä¼ å…¥mybatisé…ç½®ä¿¡æ¯
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputstream);
 		}
 
