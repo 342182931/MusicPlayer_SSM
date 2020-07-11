@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xu.ssm.mapper.MessageMapperCustom">
+	<resultMap type="MessageCustom" id="MessageCustom_Rm">
+		<id column="messageid" jdbcType="INTEGER" property="messageid" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="musicid" jdbcType="INTEGER" property="musicid" />
+		<result column="comment" jdbcType="VARCHAR" property="comment" />
+		<result column="time" jdbcType="TIMESTAMP" property="time" />
+		<result column="reply" jdbcType="INTEGER" property="reply" />
+		<association property="user" column="userid"
+			select="com.xu.ssm.mapper.UserMapper.selectByPrimaryKey" />
+		<association property="message" column="reply"
+			select="com.xu.ssm.mapper.MessageMapper.selectByPrimaryKey" />
+		<association property="music" column="musicid"
+			select="com.xu.ssm.mapper.MusicMapper.selectByPrimaryKey" />
+	</resultMap>
+	<sql id="sql_select_where_equal">
+		m1.userid=tb_user.userid and m1.musicid=tb_music.musicid
+		<if test="messageCustom!=null">
+			<if test="messageCustom.messageid!='' and messageCustom.messageid!=null">
+				and m1.messageid = ${messageCustom.messageid}
+			</if>
+			<if test="messageCustom.userid!='' and messageCustom.userid!=null">
+				and m1.userid = ${messageCustom.userid}
+			</if>
+			<if test="messageCustom.musicid!='' and messageCustom.musicid!=null">
+				and m1.musicid =${messageCustom.musicid}
+			</if>
+			<if test="messageCustom.comment!='' and messageCustom.comment!=null">
+				and m1.comment like '%${messageCustom.comment}%'
+			</if>
+			<if test="messageCustom.time!='' and messageCustom.time!=null">
+				and m1.time like '%${messageCustom.time}%'
+			</if>
+			<if test="messageCustom.reply!=null">
+				and m1.reply =${messageCustom.reply}
+			</if>
+		</if>
+	</sql>
+	<select id="findMessageByPage" parameterType="map"
+		resultMap="MessageCustom_Rm">
+		SELECT m1.*,m2.*,tb_User.*,tb_music.* FROM (tb_message
+		m1,tb_User,tb_music) left join tb_message m2 on m1.reply=m2.messageid
+		<where>
+			<include refid="sql_select_where_equal" />
+		</where>
+		order by m1.time desc
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+</mapper>

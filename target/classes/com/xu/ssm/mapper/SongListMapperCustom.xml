@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xu.ssm.mapper.SongListMapperCustom">
+<resultMap id="SongListCustom_Rm" type="SongListCustom">
+    <id column="songlistid" jdbcType="INTEGER" property="songlistid" />
+    <association property="songmenu" column="songmenuid"
+			select="com.xu.ssm.mapper.SongMenuMapperCustom.selectByPrimaryKey" />
+	<association property="music" column="musicid"
+			select="com.xu.ssm.mapper.MusicMapperCustom.selectByPrimaryKey" />
+  </resultMap>
+  <select id="findSongListById" parameterType="Integer"
+		resultMap="SongListCustom_Rm">
+		SELECT tb_songlist.*,tb_music.* 
+		FROM tb_music,tb_songlist 
+		where tb_music.musicid=tb_songlist.musicid and tb_songlist.songmenuid=#{songmenuid}
+	</select>
+</mapper>

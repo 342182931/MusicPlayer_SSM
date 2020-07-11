@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xu.ssm.mapper.UserMapperCustom">
+	<sql id="sql_select_where">
+		<if test="userCustom!=null">
+			<if test="userCustom.username!='' and userCustom.username!=null">
+				tb_user.username LIKE '%${userCustom.username}%'</if>
+		</if>
+	</sql>
+	<sql id="sql_select_where_equal">
+		<if test="userCustom!=null">
+			<trim prefixOverrides="and">
+				<if test="userCustom.username!='' and userCustom.username!=null">
+					and tb_user.username = '${userCustom.username}'
+				</if>
+				<if test="userCustom.password!='' and userCustom.password!=null">
+					and tb_user.password = '${userCustom.password}'
+				</if>
+				<if test="userCustom.name!='' and userCustom.name!=null">
+					and tb_user.name like '%${userCustom.name}%'
+				</if>
+				<if test="userCustom.sex!='' and userCustom.sex!=null">
+					and tb_user.sex like '%${userCustom.sex}%'
+				</if>
+				<if test="userCustom.age!='' and userCustom.age!=null">
+					and tb_user.age like '%${userCustom.age}%'
+				</if>
+				<if test="userCustom.birthday!=null">
+					and tb_user.birthday like '%${userCustom.birthday}%'
+				</if>
+				<if test="userCustom.email!='' and userCustom.email!=null">
+					and tb_user.email like '%${userCustom.email}%'
+				</if>
+				<if test="userCustom.tel!='' and userCustom.tel!=null">
+					and tb_user.tel like '%${userCustom.tel}%'
+				</if>
+				<if test="userCustom.adress!='' and userCustom.adress!=null">
+					and tb_user.adress like '%${userCustom.adress}%'
+				</if>
+				<if test="userCustom.orright!='' and userCustom.orright!=null">
+					and tb_user.orright = '${userCustom.orright}'
+				</if>
+			</trim>
+		</if>
+	</sql>
+	<sql id="update_where">
+			<trim  suffixOverrides=",">
+				<if test="username!='' and username!=null">
+					username = #{username,jdbcType=VARCHAR},
+				</if>
+				<if test="password!='' and password!=null">
+					password = #{password,jdbcType=VARCHAR},
+				</if>
+				<if test="name!='' and name!=null">
+					name = #{name,jdbcType=VARCHAR},
+				</if>
+				<if test="sex!='' and sex!=null">
+					sex = #{sex,jdbcType=INTEGER},
+				</if>
+				<if test="photo!='' and photo!=null">
+					photo = #{photo,jdbcType=VARCHAR},
+				</if>
+				<if test="age!='' and age!=null">
+					age = #{age,jdbcType=INTEGER},
+				</if>
+				<if test="birthday!=null">
+					birthday = #{birthday,jdbcType=DATE},
+				</if>
+				<if test="email!='' and email!=null">
+					email = #{email,jdbcType=VARCHAR},
+				</if>
+				<if test="tel!='' and tel!=null">
+					tel = #{tel,jdbcType=VARCHAR},
+				</if>
+				<if test="adress!='' and adress!=null">
+					adress = #{adress,jdbcType=VARCHAR},
+				</if>
+				<if test="note!='' and note!=null">
+					note = #{note,jdbcType=VARCHAR},
+				</if>
+				<if test="orright!='' and orright!=null">
+					orright = #{orright,jdbcType=INTEGER}
+				</if>
+			</trim>
+	</sql>
+	<select id="findUserList" parameterType="UserQueryVo"
+		resultType="UserCustom">
+		SELECT tb_user.* FROM tb_user
+		<where>
+			<include refid="sql_select_where"></include>
+		</where>
+	</select>
+	<select id="findUser" parameterType="UserQueryVo"
+		resultType="UserCustom">
+		SELECT tb_user.* FROM tb_user
+		<where>
+			<include refid="sql_select_where_equal"></include>
+		</where>
+	</select>
+	<select id="findUserByPage" parameterType="map"
+		resultType="UserCustom">
+		SELECT tb_user.* FROM tb_user
+		<where>
+			<include refid="sql_select_where_equal"></include>
+		</where>
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	  <update id="updateById" parameterType="com.xu.ssm.po.UserCustom">
+    update tb_user
+    set 
+     <include refid="update_where"></include>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
