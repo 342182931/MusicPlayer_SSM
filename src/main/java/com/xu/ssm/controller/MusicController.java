@@ -69,13 +69,13 @@ public class MusicController {
 	public void upload(MusicCustom musicCustom) throws Exception {
 		List<MusicCustom> list = musicService.findMusic(musicCustom);
 		if (list.size() == 0) {
-			// ÏÂÔØMP3¸èÇú
+			// ä¸‹è½½MP3æ­Œæ›²
 			if (musicCustom.getPath() != null || musicCustom.getPath() != "") {
 				String downloadmp3 = "D:\\upload\\mp3\\" + musicCustom.getName() + ".mp3";
 				FileRenameUtil.downloadFile(musicCustom.getPath(), downloadmp3);
 				musicCustom.setPath("/upload/mp3/" + musicCustom.getName() + ".mp3");
 			}
-			// ÏÂÔØÍ¼Æ¬
+			// ä¸‹è½½å›¾ç‰‡
 			if (musicCustom.getPhoto() != null || musicCustom.getPhoto() != "") {
 				String photoname = FileRenameUtil.fileRename() + ".jpg";
 				String downloadphoto = "D:\\upload\\photo\\" + photoname;
@@ -91,16 +91,16 @@ public class MusicController {
 
 	@RequestMapping("download")
 	public ResponseEntity<byte[]> download(HttpServletRequest request, String filename) throws IOException {
-		String realPath = "D:" + filename;// »ñÈ¡ÏÂÔØÎÄ¼şµÄÂ·¾¶
-		File file = new File(realPath);// °ÑÏÂÔØÎÄ¼ş¹¹³ÉÒ»¸öÎÄ¼ş´¦Àí filename:Ç°Ì¨´«¹ıÀ´µÄÎÄ¼şÃû³Æ
+		String realPath = "D:" + filename;// è·å–ä¸‹è½½æ–‡ä»¶çš„è·¯å¾„
+		File file = new File(realPath);// æŠŠä¸‹è½½æ–‡ä»¶æ„æˆä¸€ä¸ªæ–‡ä»¶å¤„ç† filename:å‰å°ä¼ è¿‡æ¥çš„æ–‡ä»¶åç§°
 
-		HttpHeaders headers = new HttpHeaders();// ÉèÖÃÍ·ĞÅÏ¢
-		String downloadFileName = new String(filename.getBytes("UTF-8"), "iso-8859-1");// ÉèÖÃÏìÓ¦µÄÎÄ¼şÃû
+		HttpHeaders headers = new HttpHeaders();// è®¾ç½®å¤´ä¿¡æ¯
+		String downloadFileName = new String(filename.getBytes("UTF-8"), "iso-8859-1");// è®¾ç½®å“åº”çš„æ–‡ä»¶å
 
 		headers.setContentDispositionFormData("attachment", downloadFileName);
 		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
-		// MediaType:»¥ÁªÍøÃ½½éÀàĞÍ contentType£º¾ßÌåÇëÇóÖĞµÄÃ½ÌåÀàĞÍĞÅÏ¢
+		// MediaType:äº’è”ç½‘åª’ä»‹ç±»å‹ contentTypeï¼šå…·ä½“è¯·æ±‚ä¸­çš„åª’ä½“ç±»å‹ä¿¡æ¯
 		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
 	}
 
@@ -153,7 +153,7 @@ public class MusicController {
 		musicService.updateUser(id, musicCustom);
 		return "forward:/houtai/findMusicListByPage.action?currPage="+currPage;
 	}
-	// ÎÄ¼şÉÏ´«
+	// æ–‡ä»¶ä¸Šä¼ 
 		public MusicCustom upload(MultipartFile file, MusicCustom musicCustom) {
 			try {
 				String name = file.getOriginalFilename();
@@ -164,7 +164,7 @@ public class MusicController {
 				if (!f.exists())
 					f.mkdirs();
 				file.transferTo(f);
-				System.out.println("ÉÏ´«³É¹¦");
+				System.out.println("ä¸Šä¼ æˆåŠŸ");
 				musicCustom.setMv("/upload/mv/" + fileName);
 				return musicCustom;
 			} catch (IllegalStateException e) {

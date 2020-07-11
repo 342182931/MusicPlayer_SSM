@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.xu.ssm.mapper.MusicMapper;
 import com.xu.ssm.mapper.MusicMapperCustom;
-import com.xu.ssm.po.Music;
 import com.xu.ssm.po.MusicCustom;
 import com.xu.ssm.po.MusicQueryVo;
 import com.xu.ssm.po.PageBean;
@@ -29,25 +28,25 @@ public class MusicServiceImpl implements MusicService {
 		PageBean<MusicCustom> pageBean = new PageBean<MusicCustom>();
 
 		map1.put("musicCustom", musicQueryVo.getMusicCustom());
-		// ·â×°×Ü¼ÇÂ¼Êı
+		// å°è£…æ€»è®°å½•æ•°
 		int totalCount = musicMapperCustom.findMusicByPage(map1).size();
 		pageBean.setTotalCount(totalCount);
 
-		// ·â×°µ±Ç°Ò³ÊıÊıÁ¿
+		// å°è£…å½“å‰é¡µæ•°æ•°é‡
 		if (pageSize != null) {
 			pageBean.setPageSize(pageSize);
 		}
-		// ·â×°×ÜÒ³Êı
+		// å°è£…æ€»é¡µæ•°
 		pageBean.setTotalPage();
 
-		// ·â×°µ±Ç°Ò³Êı
+		// å°è£…å½“å‰é¡µæ•°
 		pageBean.setCurrPage(currPage);
 
-		// ½«Öµ´æ½ømapÖĞ
+		// å°†å€¼å­˜è¿›mapä¸­
 		map.put("start", (pageBean.getCurrPage() - 1) * pageBean.getPageSize());
 		map.put("size", pageBean.getPageSize());
 		map.put("musicCustom", musicQueryVo.getMusicCustom());
-		// ·â×°Ã¿Ò³ÏÔÊ¾µÄÊı¾İ
+		// å°è£…æ¯é¡µæ˜¾ç¤ºçš„æ•°æ®
 		List<MusicCustom> lists = musicMapperCustom.findMusicByPage(map);
 		pageBean.setListT(lists);
 
@@ -92,26 +91,26 @@ public class MusicServiceImpl implements MusicService {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		PageBean<MusicCustom> pageBean = new PageBean<MusicCustom>();
 
-		// ·â×°×Ü¼ÇÂ¼Êı
+		// å°è£…æ€»è®°å½•æ•°
 		int totalCount = musicMapperCustom.findMusicByPage(null).size();
 		totalCount = totalCount > 30 ? 30 : totalCount;
 		pageBean.setTotalCount(totalCount);
 
-		// ·â×°µ±Ç°Ò³ÊıÊıÁ¿
+		// å°è£…å½“å‰é¡µæ•°æ•°é‡
 		if (pageSize != null) {
 			pageBean.setPageSize(pageSize);
 		}
-		// ·â×°×ÜÒ³Êı
+		// å°è£…æ€»é¡µæ•°
 		pageBean.setTotalPage();
 
-		// ·â×°µ±Ç°Ò³Êı
+		// å°è£…å½“å‰é¡µæ•°
 		pageBean.setCurrPage(currPage);
 
-		// ½«Öµ´æ½ømapÖĞ
+		// å°†å€¼å­˜è¿›mapä¸­
 		map.put("start", (pageBean.getCurrPage() - 1) * pageBean.getPageSize());
 		map.put("size", pageBean.getPageSize());
 		map.put("term", term);
-		// ·â×°Ã¿Ò³ÏÔÊ¾µÄÊı¾İ
+		// å°è£…æ¯é¡µæ˜¾ç¤ºçš„æ•°æ®
 		List<MusicCustom> lists = musicMapperCustom.findMusicByRank(map);
 		pageBean.setListT(lists);
 

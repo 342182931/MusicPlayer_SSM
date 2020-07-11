@@ -17,11 +17,11 @@ import org.apache.commons.io.FileUtils;
  * Title: FileRenameUtil
  * </p>
  * <p>
- * Description:Ëæ»ú´´½¨ÎÄ¼şÃû×Ö-¹¤¾ßÀà
+ * Description:éšæœºåˆ›å»ºæ–‡ä»¶åå­—-å·¥å…·ç±»
  * </p>
  * 
  * @author xujianfeng
- * @date 2020Äê1ÔÂ29ÈÕ
+ * @date 2020å¹´1æœˆ29æ—¥
  */
 public class FileRenameUtil {
 	public static String fileRename() {
@@ -29,12 +29,12 @@ public class FileRenameUtil {
 		String time = sdf.format(new Date());
 		StringBuffer buf = new StringBuffer(time);
 		Random r = new Random();
-		for (int x = 0; x < 3; x++) {// Ñ­»·È¡µÃÈı¸ö²»´óÓÚ10µÄËæ»úÕûÊı
+		for (int x = 0; x < 3; x++) {// å¾ªç¯å–å¾—ä¸‰ä¸ªä¸å¤§äº10çš„éšæœºæ•´æ•°
 			buf.append(r.nextInt(10));
 		}
 		return buf.toString();
 	}
-	//Éú³½µ±Ç°Ê±¼ä
+	//ç”Ÿè¾°å½“å‰æ—¶é—´
 	public static Date systime() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.parse(sdf.format(new Date()));
@@ -47,9 +47,9 @@ public class FileRenameUtil {
 		urlCon.setReadTimeout(6000);
 		int code = urlCon.getResponseCode();
 		if (code != HttpURLConnection.HTTP_OK) {
-			throw new Exception("ÎÄ¼ş¶ÁÈ¡Ê§°Ü");
+			throw new Exception("æ–‡ä»¶è¯»å–å¤±è´¥");
 		}
-		// ¶ÁÎÄ¼şÁ÷£»
+		// è¯»æ–‡ä»¶æµï¼›
 		DataInputStream in = new DataInputStream(urlCon.getInputStream());
 		DataOutputStream out = new DataOutputStream(new FileOutputStream(fileLocal));
 		byte[] buffer = new byte[2048];
@@ -66,11 +66,11 @@ public class FileRenameUtil {
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("²»ºÏ·¨µÄURL");
+			System.out.println("ä¸åˆæ³•çš„URL");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("ÏÂÔØÊ§°Ü");
+			System.out.println("ä¸‹è½½å¤±è´¥");
 		}
 	}
 }

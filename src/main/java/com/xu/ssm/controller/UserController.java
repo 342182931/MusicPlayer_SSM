@@ -88,14 +88,14 @@ public class UserController {
 		UserCustom userCustom = userService.findUser(userQueryVo);
 		HttpSession session = request.getSession();
 		session.setAttribute("userCustom", userCustom);
-		if (userCustom != null) {// 权限验证
+		if (userCustom != null) {// 鏉冮檺楠岃瘉
 			if (userCustom.getOrright() != 1) {
-				mv.addObject("msg", "用户权限不够");
+				mv.addObject("msg", "鐢ㄦ埛鏉冮檺涓嶅");
 				mv.setViewName("houtai/login");
 				return mv;
 			}
-		} else {// 验证账号密码
-			mv.addObject("msg", "帐号密码错误");
+		} else {// 楠岃瘉璐﹀彿瀵嗙爜
+			mv.addObject("msg", "甯愬彿瀵嗙爜閿欒");
 			mv.setViewName("houtai/login");
 			return mv;
 		}
@@ -207,7 +207,7 @@ public class UserController {
 		queryVo.setUserCustom(userCustom);
 		UserCustom user1 = userService.findUser(queryVo);
 		if (user1 == null) {
-			// 下载图片
+			// 涓嬭浇鍥剧墖
 			if (userCustom.getPhoto() != null || userCustom.getPhoto() != "") {
 				String photoname = FileRenameUtil.fileRename() + ".jpg";
 				String downloadphoto = "D:\\upload\\photo\\" + photoname;
@@ -221,7 +221,7 @@ public class UserController {
 		return user1;
 	}
 
-	// 文件上传
+	// 鏂囦欢涓婁紶
 	public void upload(MultipartFile file, UserCustom userCustom) {
 		try {
 			String name = file.getOriginalFilename();

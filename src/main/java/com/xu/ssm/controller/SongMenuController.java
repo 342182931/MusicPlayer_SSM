@@ -47,9 +47,9 @@ public class SongMenuController {
 		songMenuCustom.setUserid(userid);
 		songMenuCustom.setTime(FileRenameUtil.systime());
 		songMenuCustom.setPhoto("/upload/photo.jpeg");
-		songMenuCustom.setLanguage("国语");
-		songMenuCustom.setTheme("经典");
-		songMenuCustom.setStyle("流行");
+		songMenuCustom.setLanguage("鍥借");
+		songMenuCustom.setTheme("缁忓吀");
+		songMenuCustom.setStyle("娴佽");
 		songMenuService.addSongMenu(songMenuCustom);
 		return "redirect:person_listmenu.action?userid="+userid;
 	}
@@ -72,7 +72,7 @@ public class SongMenuController {
 			return "person-list";
 		}
 	}
-	//查找关于用户收藏和创建的歌单
+	//鏌ユ壘鍏充簬鐢ㄦ埛鏀惰棌鍜屽垱寤虹殑姝屽崟
 	@RequestMapping("findUserSongMenu")
 	public @ResponseBody List<SongMenuCustom> findUserSongMenu(Integer userid,HttpServletRequest request){
 		if(userid==null) {return null;}

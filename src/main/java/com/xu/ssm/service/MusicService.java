@@ -10,9 +10,9 @@ import com.xu.ssm.po.PageBean;
 /**
  * 
 * <p>Title: MusicService</p>  
-* <p>Description:ÒôÀÖservice½Ó¿Ú </p>  
+* <p>Description:éŸ³ä¹serviceæ¥å£ </p>  
 * @author xujianfeng  
-* @date 2019Äê8ÔÂ28ÈÕ
+* @date 2019å¹´8æœˆ28æ—¥
  */
 public interface MusicService {
 

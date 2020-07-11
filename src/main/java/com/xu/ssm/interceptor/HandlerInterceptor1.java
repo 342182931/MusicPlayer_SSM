@@ -8,30 +8,30 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 
 * <p>Title: HandlerInterceptor1</p>  
-* <p>Description:Ç°Ì¨À¹½ØÆ÷ </p>  
+* <p>Description:å‰å°æ‹¦æˆªå™¨ </p>  
 * @author xujianfeng  
-* @date 2020Äê1ÔÂ24ÈÕ
+* @date 2020å¹´1æœˆ24æ—¥
  */
 public class HandlerInterceptor1 implements HandlerInterceptor {
-	// ½øÈëhandle·½·¨Ö®Ç°
-	// Éí·İÈÏÖ¤ºÍÉí·İÊÚÈ¨
+	// è¿›å…¥handleæ–¹æ³•ä¹‹å‰
+	// èº«ä»½è®¤è¯å’Œèº«ä»½æˆæƒ
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("½øÈëhandlerÖ®Ç°");
+		System.out.println("è¿›å…¥handlerä¹‹å‰");
 		return false;
 	}
 
-	// ½øÈëhandleÖ®ºó£¬·µ»ØModelAndViewÖ®Ç°
-	// ½«¹«ÓÃµÄÄ£ĞÍÊı¾İ£¨±ÈÈç²Ëµ¥µ¼º½À¸£©ÔÚÕâÀï´«µ½ÊÓÍ¼£¬Í³Ò»µÄÊÓÍ¼´¦Àí
+	// è¿›å…¥handleä¹‹åï¼Œè¿”å›ModelAndViewä¹‹å‰
+	// å°†å…¬ç”¨çš„æ¨¡å‹æ•°æ®ï¼ˆæ¯”å¦‚èœå•å¯¼èˆªæ ï¼‰åœ¨è¿™é‡Œä¼ åˆ°è§†å›¾ï¼Œç»Ÿä¸€çš„è§†å›¾å¤„ç†
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("ÔËĞĞhandlerÖĞ¡£¡£¡£");
+		System.out.println("è¿è¡Œhandlerä¸­ã€‚ã€‚ã€‚");
 	}
 
-	// Ö´ĞĞÍê·½·¨Ö®ºó
-	// Í³Ò»µÄÒì³£´¦Àí
+	// æ‰§è¡Œå®Œæ–¹æ³•ä¹‹å
+	// ç»Ÿä¸€çš„å¼‚å¸¸å¤„ç†
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("ÔËĞĞhandlerÖ®ºó");
+		System.out.println("è¿è¡Œhandlerä¹‹å");
 	}
 }

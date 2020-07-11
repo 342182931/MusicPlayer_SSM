@@ -27,26 +27,26 @@ public class SongMenuServiceImpl implements SongMenuService {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		PageBean<SongMenuCustom> pageBean = new PageBean<SongMenuCustom>();
 
-		// ·â×°µ±Ç°Ò³ÊıÊıÁ¿
+		// å°è£…å½“å‰é¡µæ•°æ•°é‡
 		if (pageSize != null) {
 			pageBean.setPageSize(pageSize);
 		}
-		// ·â×°×Ü¼ÇÂ¼Êı
+		// å°è£…æ€»è®°å½•æ•°
 		int totalCount = songMenuMapperCustom.findSongMenuByPage(null).size();
 		pageBean.setTotalCount(totalCount);
 
-		// ·â×°×ÜÒ³Êı
+		// å°è£…æ€»é¡µæ•°
 		pageBean.setTotalPage();
 
-		// ·â×°µ±Ç°Ò³Êı
+		// å°è£…å½“å‰é¡µæ•°
 		pageBean.setCurrPage(currPage);
 
-		// ½«Öµ´æ½ømapÖĞ
+		// å°†å€¼å­˜è¿›mapä¸­
 		map.put("start", (pageBean.getCurrPage() - 1) * pageBean.getPageSize());
 		map.put("size", pageBean.getPageSize());
 		if (songMenuQueryVo != null)
 			map.put("songMenuCustom", songMenuQueryVo.getSongMenuCustom());
-		// ·â×°Ã¿Ò³ÏÔÊ¾µÄÊı¾İ
+		// å°è£…æ¯é¡µæ˜¾ç¤ºçš„æ•°æ®
 		List<SongMenuCustom> lists = songMenuMapperCustom.findSongMenuByPage(map);
 		pageBean.setListT(lists);
 

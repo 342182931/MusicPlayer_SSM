@@ -11,49 +11,49 @@ import com.xu.ssm.po.UserCustom;
 /**
  * 
 * <p>Title: HandlerInterceptor2</p>  
-* <p>Description:ºóÌ¨À¹½ØÆ÷ </p>  
+* <p>Description:åå°æ‹¦æˆªå™¨ </p>  
 * @author xujianfeng  
-* @date 2020Äê1ÔÂ24ÈÕ
+* @date 2020å¹´1æœˆ24æ—¥
  */
 public class HandlerInterceptor2 implements HandlerInterceptor {
 
-	// ½øÈëhandle·½·¨Ö®Ç°
-	// Éí·İÈÏÖ¤ºÍÉí·İÊÚÈ¨
+	// è¿›å…¥handleæ–¹æ³•ä¹‹å‰
+	// èº«ä»½è®¤è¯å’Œèº«ä»½æˆæƒ
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("ÔËĞĞhandlerÖ®Ç°¡£");
+		System.out.println("è¿è¡Œhandlerä¹‹å‰ã€‚");
 
-		// »ñÈ¡ÇëÇóµÄURL
+		// è·å–è¯·æ±‚çš„URL
 		StringBuffer url = request.getRequestURL();
-		// ³ıÁËµÚÒ»´ÎµÇÂ¼£¬ÍË³öµ½µÇÂ¼Ò³Ãæ£¬ÆäËûÇ®À¹½Ø
+		// é™¤äº†ç¬¬ä¸€æ¬¡ç™»å½•ï¼Œé€€å‡ºåˆ°ç™»å½•é¡µé¢ï¼Œå…¶ä»–é’±æ‹¦æˆª
 		if (url.indexOf("/findUser.action") > 0 || url.indexOf("/login") > 0) {
 			return true;
 		}
-		// »ñÈ¡session
+		// è·å–session
 		HttpSession session = request.getSession();
-		UserCustom userCustom = (UserCustom) session.getAttribute("userCustom"); // ÅĞ¶ÏsessionÀïÊÇ²»ÊÇÓĞµÇÂ¼ĞÅÏ¢
-		//ÅĞ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
+		UserCustom userCustom = (UserCustom) session.getAttribute("userCustom"); // åˆ¤æ–­sessioné‡Œæ˜¯ä¸æ˜¯æœ‰ç™»å½•ä¿¡æ¯
+		//åˆ¤æ–­ç”¨æˆ·æ˜¯å¦ç™»å½•
 		if (userCustom != null) {
 			return true;
 		}
-		String msg = "Äã»¹Ã»ÓĞµÇÂ¼£¬ÇëÏÈµÇÂ¼£¡";
+		String msg = "ä½ è¿˜æ²¡æœ‰ç™»å½•ï¼Œè¯·å…ˆç™»å½•ï¼";
 		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("/houtai/login.jsp").forward(request, response);
 		return false;
 	}
 
-	// ½øÈëhandleÖ®ºó£¬·µ»ØModelAndViewÖ®Ç°
-	// ½«¹«ÓÃµÄÄ£ĞÍÊı¾İ£¨±ÈÈç²Ëµ¥µ¼º½À¸£©ÔÚÕâÀï´«µ½ÊÓÍ¼£¬Í³Ò»µÄÊÓÍ¼´¦Àí
+	// è¿›å…¥handleä¹‹åï¼Œè¿”å›ModelAndViewä¹‹å‰
+	// å°†å…¬ç”¨çš„æ¨¡å‹æ•°æ®ï¼ˆæ¯”å¦‚èœå•å¯¼èˆªæ ï¼‰åœ¨è¿™é‡Œä¼ åˆ°è§†å›¾ï¼Œç»Ÿä¸€çš„è§†å›¾å¤„ç†
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("ÔËĞĞhandlerÖĞ¡£¡£¡£");
+		System.out.println("è¿è¡Œhandlerä¸­ã€‚ã€‚ã€‚");
 	}
 
-	// Ö´ĞĞÍê·½·¨Ö®ºó
-	// Í³Ò»µÄÒì³£´¦Àí
+	// æ‰§è¡Œå®Œæ–¹æ³•ä¹‹å
+	// ç»Ÿä¸€çš„å¼‚å¸¸å¤„ç†
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// ÅĞ¶Ïsession
-		System.out.println("ÔËĞĞhandlerºó...");
+		// åˆ¤æ–­session
+		System.out.println("è¿è¡Œhandlerå...");
 	}
 }

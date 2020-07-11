@@ -7,9 +7,9 @@ import com.xu.ssm.po.PageBean;
 /**
  * 
 * <p>Title: MessageService</p>  
-* <p>Description:ÆÀÂÛservice½Ó¿Ú </p>  
+* <p>Description:è¯„è®ºserviceæ¥å£ </p>  
 * @author xujianfeng  
-* @date 2019Äê8ÔÂ28ÈÕ
+* @date 2019å¹´8æœˆ28æ—¥
  */
 public interface MessageService {
 

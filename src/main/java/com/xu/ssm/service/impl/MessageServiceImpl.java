@@ -25,22 +25,22 @@ public class MessageServiceImpl implements MessageService{
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		PageBean<MessageCustom> pageBean = new PageBean<MessageCustom>();
 
-		// ·â×°×Ü¼ÇÂ¼Êı
+		// å°è£…æ€»è®°å½•æ•°
 		HashMap<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("messageCustom", messageQueryVo.getMessageCustom());
 		int totalCount = messageMapperCustom.findMessageByPage(map1).size();
 		pageBean.setTotalCount(totalCount);
 
-		// ·â×°×ÜÒ³Êı
+		// å°è£…æ€»é¡µæ•°
 		pageBean.setTotalPage();
 
-		// ·â×°µ±Ç°Ò³Êı
+		// å°è£…å½“å‰é¡µæ•°
 		pageBean.setCurrPage(currPage);
-		// ½«Öµ´æ½ømapÖĞ
+		// å°†å€¼å­˜è¿›mapä¸­
 		map.put("start", (pageBean.getCurrPage() - 1) * pageBean.getPageSize());
 		map.put("size", pageBean.getPageSize());
 		map.put("messageCustom", messageQueryVo.getMessageCustom());
-		// ·â×°Ã¿Ò³ÏÔÊ¾µÄÊı¾İ
+		// å°è£…æ¯é¡µæ˜¾ç¤ºçš„æ•°æ®
 		List<MessageCustom> lists = messageMapperCustom.findMessageByPage(map);
 		pageBean.setListT(lists);
 

@@ -8,9 +8,9 @@ import com.xu.ssm.po.SongMenuCustom;
 /**
  * 
 * <p>Title: MusicandsongmenuService</p>  
-* <p>Description:¸èµ¥ºÍ¸èÇúservice½Ó¿Ú </p>  
+* <p>Description:æ­Œå•å’Œæ­Œæ›²serviceæ¥å£ </p>  
 * @author xujianfeng  
-* @date 2019Äê8ÔÂ28ÈÕ
+* @date 2019å¹´8æœˆ28æ—¥
  */
 public interface SongListService {
 

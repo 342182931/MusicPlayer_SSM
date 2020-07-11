@@ -9,9 +9,9 @@ import com.xu.ssm.po.SongMenuQueryVo;
 /**
  * 
 * <p>Title: SongmenuService</p>  
-* <p>Description:¸èµ¥service½Ó¿Ú </p>  
+* <p>Description:æ­Œå•serviceæ¥å£ </p>  
 * @author xujianfeng  
-* @date 2019Äê8ÔÂ28ÈÕ
+* @date 2019å¹´8æœˆ28æ—¥
  */
 public interface SongMenuService {
 
