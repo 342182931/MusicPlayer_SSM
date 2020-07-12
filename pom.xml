@@ -13,6 +13,15 @@
 		<spring-version>5.1.9.RELEASE</spring-version>
 	</properties>
 	<dependencies>
+	<!-- servlet -->
+	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>3.1.0</version>
+    	<scope>provided</scope>
+	</dependency>
+	
 		<!-- 数据库驱动包 -->
 		<!-- mysql-connector-java -->
 		<dependency>
