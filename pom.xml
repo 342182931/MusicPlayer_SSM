@@ -271,6 +271,6 @@
 
 	</dependencies>
 	<build>
-		<finalName>MusicPlayer</finalName>
+		<finalName>MusicPlayer_SSM</finalName>
 	</build>
 </project>
