@@ -3,6 +3,7 @@ package com.xu.ssm.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import com.xu.ssm.po.UserCustom;
 import com.xu.ssm.po.UserQueryVo;
 import com.xu.ssm.service.UserService;
 import com.xu.ssm.tools.FileRenameUtil;
+import com.xu.ssm.tools.PropertyUtil;
 
 @Controller
 public class UserController {
@@ -210,7 +212,7 @@ public class UserController {
 			// 下载图片
 			if (userCustom.getPhoto() != null || userCustom.getPhoto() != "") {
 				String photoname = FileRenameUtil.fileRename() + ".jpg";
-				String downloadphoto = "D:\\upload\\photo\\" + photoname;
+				String downloadphoto = PropertyUtil.getProperty("filegoldeurl")+"photo\\" + photoname;
 				FileRenameUtil.downloadFile(userCustom.getPhoto(), downloadphoto);
 				userCustom.setPhoto("/upload/photo/" + photoname);
 			}
@@ -227,7 +229,7 @@ public class UserController {
 			String name = file.getOriginalFilename();
 			String fileName = FileRenameUtil.fileRename() + name.substring(name.indexOf("."));
 			// String path = request.getServletContext().getRealPath("/upload/");
-			String path = "D:\\upload\\";
+			String path = PropertyUtil.getProperty("filegoldeurl");
 			File f = new File(path, fileName);
 			if (!f.exists())
 				f.mkdirs();

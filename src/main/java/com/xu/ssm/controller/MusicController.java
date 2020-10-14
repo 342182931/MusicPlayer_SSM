@@ -25,6 +25,7 @@ import com.xu.ssm.po.PageBean;
 import com.xu.ssm.po.UserCustom;
 import com.xu.ssm.service.MusicService;
 import com.xu.ssm.tools.FileRenameUtil;
+import com.xu.ssm.tools.PropertyUtil;
 
 @Controller
 public class MusicController {
@@ -71,7 +72,7 @@ public class MusicController {
 		if (list.size() == 0) {
 			// 下载MP3歌曲
 			if (musicCustom.getPath() != null || musicCustom.getPath() != "") {
-				String downloadmp3 = "D:\\upload\\mp3\\" + musicCustom.getName() + ".mp3";
+				String downloadmp3 = PropertyUtil.getProperty("filegoldeurl")+"mp3\\" + musicCustom.getName() + ".mp3";
 				FileRenameUtil.downloadFile(musicCustom.getPath(), downloadmp3);
 				musicCustom.setPath("/upload/mp3/" + musicCustom.getName() + ".mp3");
 			}
@@ -159,7 +160,7 @@ public class MusicController {
 				String name = file.getOriginalFilename();
 				String fileName = FileRenameUtil.fileRename() + name.substring(name.indexOf("."));
 				// String path = request.getServletContext().getRealPath("/upload/");
-				String path = "D:\\upload\\mv\\";
+				String path = PropertyUtil.getProperty("filegoldeurl")+"mv\\";
 				File f = new File(path, fileName);
 				if (!f.exists())
 					f.mkdirs();
