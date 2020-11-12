@@ -24,7 +24,7 @@ import org.apache.commons.io.FileUtils;
  * @date 2020年1月29日
  */
 public class FileRenameUtil {
-	public static String fileRename() {
+	public static String fileRename() {//生成序列号
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		String time = sdf.format(new Date());
 		StringBuffer buf = new StringBuffer(time);
@@ -34,12 +34,12 @@ public class FileRenameUtil {
 		}
 		return buf.toString();
 	}
-	//生辰当前时间
+	//生成当前时间
 	public static Date systime() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.parse(sdf.format(new Date()));
 	}
-
+	//下载文件
 	public static void downloadFile(String fileUrl, String fileLocal) throws Exception {
 		URL url = new URL(fileUrl);
 		HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();

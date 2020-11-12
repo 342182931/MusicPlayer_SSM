@@ -13,7 +13,7 @@ import org.junit.Test;
 import com.xu.ssm.mapper.MusicMapper;
 import com.xu.ssm.po.Music;
 
-public class test {
+public class test<main> {
 
 	// 闯将sqlsessionfactory
 		private SqlSessionFactory sqlSessionFactory;

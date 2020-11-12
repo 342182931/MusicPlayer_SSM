@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/music.css" />
+<link rel="stylesheet" type="text/css" href="css/lrcplay.css" />
+<link rel="stylesheet" type="text/css" href="css/audio.css" />
+<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lrcplay.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+.main {
+	background: url(img/player_background.jpg);
+	background-size: cover;
+}
+</style>
+<script type="text/javascript">
+	lrc_hashsong();
+</script>
+</head>
+<body>
+	<div class="row main">
+		<div class="col-sm-4 col-xs-5">
+			<div class="row">
+				<img id="musicImg" src="images/cover2.jpg" class="img-responsive"
+                     height="200px" width="200px"
+                     style="float: right; margin-top: 100px;">
+			</div>
+			<div class="row"
+				style="float: right; margin-top: 50px; margin-right: 50px;">
+				<a onclick="open_lrc_songname()">歌词有错</a>
+			</div>
+		</div>
+		<div class="col-sd-8 col-xs-7">
+			<div id="lrcdiv"
+				style="height: 405px; overflow: hidden; margin: 30px;">
+				<ul id="lrclist" style="transform: translateY(250px);">
+					<!-- 保证歌词在正中间 -->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row footer">
+		<div class="container">
+			<p>本系统为许剑峰所有</p>
+		</div>
+	</div>
+	<!--歌词选择界面-->
+	<div id="lrc_playmenu" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-title">
+					<h1 class="text-center">选择歌词</h1>
+				</div>
+				<div class="modal-body">
+					<div class="lrc_list_div">
+						<ul class="list-group" id="lrc_list">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -78,7 +78,7 @@
 	</bean>
 
 	<!-- 全局异常处理器 -->
- 	<bean class="com.xu.ssm.exception.CustomExceptionResolver"></bean>
+ 	<!--<bean class="com.xu.ssm.exception.CustomExceptionResolver"></bean>-->
 
 	<!-- 文件上传 -->
 	<bean id="multipartResolver"
